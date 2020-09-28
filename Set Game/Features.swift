@@ -8,11 +8,12 @@
 import Foundation
 import SwiftUI
 
-struct Features {
-    let number: Number
-    let shape: Shape
-    let color: Color
-    let shading: Shading
+struct Features: FeaturesProtocol {
+    
+    var number: Number
+    var shape: Shape
+    var color: Color
+    var shading: Shading
     
 
     enum Number: Int, CaseIterable {
@@ -39,4 +40,11 @@ struct Features {
         case open
     }
     
+}
+
+protocol FeaturesProtocol {
+    var number: Features.Number { get set }
+    var shape: Features.Shape { get set }
+    var color: Features.Color { get set }
+    var shading: Features.Shading { get set }
 }

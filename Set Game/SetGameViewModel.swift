@@ -22,9 +22,10 @@ class SetGameViewModel: ObservableObject {
             }
         }
         let numberOfCards = features.count
-        let game = SetGame<Features>(numberOfCards: numberOfCards) { cardIndex in
-            features[cardIndex]
-        }
+            let game = SetGame<Features>(numberOfCards: numberOfCards) { cardIndex in
+                features[cardIndex]
+            }
+        
         return game
     }
     
@@ -35,9 +36,6 @@ class SetGameViewModel: ObservableObject {
     var dealtCards: Array<SetGame<Features>.Card> {
         model.dealtCards
     }
-    var selectedCards: Set<Int> {
-        model.selectedCardIds
-    }
     var score: Int {
         model.score
     }
@@ -47,14 +45,24 @@ class SetGameViewModel: ObservableObject {
     var remainingCards: Int {
         model.deck.count
     }
+    var deckEmpty: Bool {
+        model.deck.count == 0
+    }
+    var isGameFinished: Bool {
+        model.isGameFinished
+    }
     // MARK: - Intent(s)
     // things the view can do to change the model
     func choose(card: SetGame<Features>.Card) {
-        withAnimation(.linear(duration: 1)){
+        withAnimation(.linear(duration: 0.3)){
             model.choose(card: card)
         }
     }
     func newGame() {
         model = SetGameViewModel.createSetGame()
+        model.dealCards(numberOfCards: 12)
+    }
+    func dealCards() {
+        model.dealCards(numberOfCards: 3)
     }
 }
