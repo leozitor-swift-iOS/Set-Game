@@ -113,9 +113,9 @@ struct CardView: View {
                 }
             }.aspectRatio(self.aspectRatio, contentMode: .fit)
             .foregroundColor(color)
-        }.padding(.horizontal, 10)
-        .cardify(isSelected: card.isSelected, isMatch: card.isMatch)
+        }.cardify(isSelected: card.isSelected, isMatch: card.isMatch)
     }
+        
     
     var color: Color {
         switch card.features.color {
