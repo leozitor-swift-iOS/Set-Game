@@ -39,10 +39,10 @@ struct Cardify: AnimatableModifier {
             } else if isSelected {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .stroke(lineWidth: edgeLineWidthSelected)
-                    .fill(Color.red)// TODO: improve the color selection
+                    .fill(Color.red)
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .fill(Color.white)
             }
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .fill(Color.white)
             RoundedRectangle(cornerRadius: cornerRadius)
                 .stroke(lineWidth: edgeLineWidth)
             content.padding(.all, 5)
